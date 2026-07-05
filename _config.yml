@@ -1,0 +1,52 @@
+# --- site ---
+title: "Maria õpipäevik"
+tagline: "Õpipäevik, juhendid ja märkmed"
+description: "Juhendid, õpetamine, töö, magistriõpe ja õppimine."
+lang: et
+
+# --- url ---
+# project site (repo nimi on blog) => sait elab aadressil mtalvik.github.io/blog/
+url: "https://mtalvik.github.io"
+baseurl: "/blog"          # kui nimetad repo ümber mtalvik.github.io => pane baseurl: ""
+
+# --- build ---
+markdown: kramdown
+permalink: pretty
+timezone: Europe/Tallinn
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# --- collections (5 voogu) ---
+collections:
+  guides:
+    output: true
+    permalink: /guides/:name/
+  work:
+    output: true
+    permalink: /work/:name/
+  masters:
+    output: true
+    permalink: /masters/:name/
+  learning:
+    output: true
+    permalink: /learning/:name/
+
+defaults:
+  - scope: { path: "", type: "guides" }
+    values: { layout: "post", stream: "guides" }
+  - scope: { path: "", type: "work" }
+    values: { layout: "post", stream: "work" }
+  - scope: { path: "", type: "masters" }
+    values: { layout: "post", stream: "masters" }
+  - scope: { path: "", type: "learning" }
+    values: { layout: "post", stream: "learning" }
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - README.md
+  - LICENSE

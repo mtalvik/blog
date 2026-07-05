@@ -1,0 +1,39 @@
+---
+layout: default
+---
+{% assign s = site.data.streams | where: "key", page.stream | first %}
+<div class="wrap page">
+  <a class="back mono" href="{{ '/' | relative_url }}">← avaleht</a>
+  <div class="metaline mono">
+    <span class="route">{{ s.route }}</span>
+    <span class="chip {{ s.chip }}">{{ s.chip_label }}</span>
+  </div>
+  <h1>{{ s.title }}</h1>
+  <p class="lead" style="color:var(--muted);max-width:52ch;margin-top:16px">{{ s.desc }}</p>
+</div>
+
+{% if s.type == "repos" %}
+<div class="wrap" style="padding-bottom:80px">
+  <div class="latest repos">
+    {% for r in s.repos %}
+    <a href="{{ r.url }}"><span class="rn">{{ r.name }}</span><i class="ext">↗</i><em class="tag">{{ r.tag }}</em></a>
+    {% endfor %}
+  </div>
+</div>
+{% else %}
+<div class="wrap">
+  <ul class="entries">
+    {% assign docs = site[s.collection] | sort: 'date' | reverse %}
+    {% for doc in docs %}
+    <li>
+      <a href="{{ doc.url | relative_url }}">
+        <time>{{ doc.date | date: "%-d.%m.%Y" }}</time>
+        <span class="etitle">{{ doc.title }}</span>
+        {% if doc.tags and doc.tags.size > 0 %}<em class="tag">{{ doc.tags | first }}</em>{% endif %}
+      </a>
+    </li>
+    {% endfor %}
+    {% if docs.size == 0 %}<li style="padding:18px 0;color:var(--faint)">Veel tühi. Varsti tuleb sisu.</li>{% endif %}
+  </ul>
+</div>
+{% endif %}

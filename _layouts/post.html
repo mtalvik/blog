@@ -1,0 +1,16 @@
+---
+layout: default
+---
+{% assign s = site.data.streams | where: "key", page.stream | first %}
+<article class="wrap page">
+  <a class="back mono" href="{{ s.route | relative_url }}">← {{ s.title }}</a>
+  <div class="metaline mono">
+    <span class="route">{{ s.route }}</span>
+    {% if page.course and page.course != "" %}<span>{{ page.course }}</span>{% endif %}
+  </div>
+  <h1>{{ page.title }}</h1>
+  <div class="pmeta mono">{{ page.date | date: "%-d.%m.%Y" }}</div>
+</article>
+<div class="wrap article">
+  {{ content }}
+</div>

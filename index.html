@@ -1,0 +1,56 @@
+---
+layout: default
+---
+{% assign total = 0 %}
+{% for s in site.data.streams %}{% if s.collection %}{% assign total = total | plus: site[s.collection].size %}{% endif %}{% endfor %}
+
+<section class="hero wrap">
+  <div class="kicker mono">{{ site.tagline }} · 2026</div>
+  <h1>Juhendid, mille olen <em>lõpetanud</em>. Ja see, mida alles õpin — valjusti.</h1>
+  <p class="lead">Viis eraldi voogu: juhendid, õpetamine, töö, magistriõpe ja isiklik õppimine. Igaüks elab oma elu — ma ei aja ühte hunnikusse.</p>
+  <div class="sysline mono">
+    <span><b class="ok">●</b> <span class="k">{{ total }}</span> entries</span>
+    <span><span class="k">{{ site.data.streams | size }}</span> streams</span>
+    <span>build <span class="k">passing</span></span>
+    <span>rss <span class="k">/feed.xml</span></span>
+  </div>
+</section>
+
+<section class="index wrap">
+  {% assign clusters = "teen,õpin" | split: "," %}
+  {% for c in clusters %}
+    <div class="grouplabel mono">// {{ c }}</div>
+    {% for s in site.data.streams %}{% if s.cluster == c %}
+      <a class="row" href="{{ s.route | relative_url }}">
+        <div class="metaline mono">
+          <span class="route">{{ s.route }}</span>
+          {% if s.type == "repos" %}<span>{{ s.repos | size }} repos</span>
+          {% else %}<span>{{ site[s.collection].size }} entries</span>{% endif %}
+          <span class="chip {{ s.chip }}">{{ s.chip_label }}</span>
+        </div>
+        <div class="head"><h2>{{ s.title }}</h2></div>
+        <span class="arrow">→</span>
+        <p class="desc">{{ s.desc }}</p>
+
+        {% if s.type == "repos" %}
+        <div class="latest repos">
+          {% for r in s.repos %}
+          <a href="{{ r.url }}"><span class="rn">{{ r.name }}</span><i class="ext">↗</i><em class="tag">{{ r.tag }}</em></a>
+          {% endfor %}
+        </div>
+        {% else %}
+        <div class="latest">
+          {% assign docs = site[s.collection] | sort: 'date' | reverse %}
+          {% for doc in docs limit: 2 %}
+          <a href="{{ doc.url | relative_url }}">
+            <time>{{ doc.date | date: "%b %Y" }}</time>
+            <span>{{ doc.title }}</span>
+            {% if doc.tags and doc.tags.size > 0 %}<em class="tag">{{ doc.tags | first }}</em>{% endif %}
+          </a>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </a>
+    {% endif %}{% endfor %}
+  {% endfor %}
+</section>

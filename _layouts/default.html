@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: 'et' }}">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{% if page.title %}{{ page.title }} · {{ site.title }}{% else %}{{ site.title }} — {{ site.tagline }}{% endif %}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}">
+{% feed_meta %}
+{% seo %}
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="{{ '/' | relative_url }}"><span class="dot"></span>mtalvik</a>
+    <nav>
+      <ul>
+        {% for s in site.data.streams %}
+        <li class="hide"><a href="{{ s.route | relative_url }}">{{ s.title }}</a></li>
+        {% endfor %}
+        <li class="hide"><a href="{{ '/about/' | relative_url }}">Minust</a></li>
+        <li class="menu"><a href="{{ '/about/' | relative_url }}">Menüü</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+{{ content }}
+</main>
+
+<footer class="wrap">
+  <div class="fgrid">
+    <div>
+      <div class="mono" style="margin-bottom:14px">Kirjuta / leia</div>
+      <h3>Aed on avatud. Tule sisse.</h3>
+    </div>
+    <div class="fnav">
+      <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
+      <a href="https://github.com/mtalvik">GitHub</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

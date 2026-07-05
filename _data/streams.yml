@@ -1,0 +1,57 @@
+# 5 voogu. Muuda siin — muutub nii avaleht kui menüü.
+# cluster: "teen" või "õpin" (klastrite järjekord on index.html-is)
+
+- key: guides
+  title: Juhendid
+  route: /guides
+  cluster: teen
+  chip: stable
+  chip_label: stable
+  collection: guides
+  desc: "Samm-sammult juhendid, mille olen lõpetanud ja mida usaldan. Saidi lipulaev."
+
+- key: teaching
+  title: Õpetamine
+  route: /teaching
+  cluster: teen
+  chip: links
+  chip_label: open
+  type: repos
+  desc: "Õpetajatöö. Kursused on juba repodes — siin lingid orgidele ja repodele, mitte postitused."
+  repos:
+    - name: "@mtalvik"
+      url: "https://github.com/mtalvik"
+      tag: org
+    - name: "automation"
+      url: "https://mtalvik.github.io/automation/"
+      tag: course
+    - name: "devops"
+      url: "https://github.com/mtalvik"
+      tag: course
+
+- key: work
+  title: Töö
+  route: /work
+  cluster: teen
+  chip: private
+  chip_label: private
+  collection: work
+  desc: "Teine töö — professionaalne. Avalikult ainult see, mis tohib; detailid luku taga."
+
+- key: masters
+  title: Magistriõpe
+  route: /masters
+  cluster: õpin
+  chip: active
+  chip_label: magister
+  collection: masters
+  desc: "TLÜ magistriõpe. Õpipäevik, refleksioonid, kodutööd. Akadeemiline ja kava järgi."
+
+- key: learning
+  title: Õppimine
+  route: /learning
+  cluster: õpin
+  chip: growing
+  chip_label: growing
+  collection: learning
+  desc: "Isiklik õppimine valjusti. Onlainkursused, mida võtan ise, huvist. Vaba tempo."
