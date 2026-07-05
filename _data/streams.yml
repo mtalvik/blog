@@ -8,7 +8,6 @@
   chip: stable
   chip_label: stable
   collection: guides
-  desc: "Samm-sammult juhendid, mille olen lõpetanud ja mida usaldan. Saidi lipulaev."
 
 - key: teaching
   title: Õpetamine
@@ -17,17 +16,19 @@
   chip: links
   chip_label: open
   type: repos
-  desc: "Õpetajatöö. Kursused on juba repodes — siin lingid orgidele ja repodele, mitte postitused."
   repos:
-    - name: "@mtalvik"
-      url: "https://github.com/mtalvik"
-      tag: org
-    - name: "automation"
-      url: "https://mtalvik.github.io/automation/"
-      tag: course
-    - name: "devops"
-      url: "https://github.com/mtalvik"
-      tag: course
+    - name: "mariahkhk"
+      url: "https://github.com/mariahkhk/mariahkhk"
+      tag: leht
+    - name: "@hkhk-tk"
+      url: "https://github.com/hkhk-tk"
+      tag: koolitus
+    - name: "@hkhk-sportbase"
+      url: "https://github.com/hkhk-sportbase"
+      tag: projekt
+    - name: "@optalvik"
+      url: "https://github.com/optalvik"
+      tag: materjal
 
 - key: work
   title: Töö
@@ -36,7 +37,6 @@
   chip: private
   chip_label: private
   collection: work
-  desc: "Teine töö — professionaalne. Avalikult ainult see, mis tohib; detailid luku taga."
 
 - key: masters
   title: Magistriõpe
@@ -45,7 +45,6 @@
   chip: active
   chip_label: magister
   collection: masters
-  desc: "TLÜ magistriõpe. Õpipäevik, refleksioonid, kodutööd. Akadeemiline ja kava järgi."
 
 - key: learning
   title: Õppimine
@@ -54,4 +53,7 @@
   chip: growing
   chip_label: growing
   collection: learning
-  desc: "Isiklik õppimine valjusti. Onlainkursused, mida võtan ise, huvist. Vaba tempo."
+  repos:
+    - name: "kafka"
+      url: "https://github.com/mtalvik/kafka"
+      tag: kursus

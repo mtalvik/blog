@@ -23,21 +23,22 @@ layout: default
       <a class="row" href="{{ s.route | relative_url }}">
         <div class="metaline mono">
           <span class="route">{{ s.route }}</span>
-          {% if s.type == "repos" %}<span>{{ s.repos | size }} repos</span>
-          {% else %}<span>{{ site[s.collection].size }} entries</span>{% endif %}
+          {% if s.collection %}<span>{{ site[s.collection].size }} entries</span>
+          {% elsif s.repos %}<span>{{ s.repos | size }} repos</span>{% endif %}
           <span class="chip {{ s.chip }}">{{ s.chip_label }}</span>
         </div>
         <div class="head"><h2>{{ s.title }}</h2></div>
         <span class="arrow">→</span>
-        <p class="desc">{{ s.desc }}</p>
+        {% if s.desc %}<p class="desc">{{ s.desc }}</p>{% endif %}
 
-        {% if s.type == "repos" %}
+        {% if s.repos %}
         <div class="latest repos">
           {% for r in s.repos %}
           <a href="{{ r.url }}"><span class="rn">{{ r.name }}</span><i class="ext">↗</i><em class="tag">{{ r.tag }}</em></a>
           {% endfor %}
         </div>
-        {% else %}
+        {% endif %}
+        {% if s.collection %}
         <div class="latest">
           {% assign docs = site[s.collection] | sort: 'date' | reverse %}
           {% for doc in docs limit: 2 %}

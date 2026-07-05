@@ -9,18 +9,19 @@ layout: default
     <span class="chip {{ s.chip }}">{{ s.chip_label }}</span>
   </div>
   <h1>{{ s.title }}</h1>
-  <p class="lead" style="color:var(--muted);max-width:52ch;margin-top:16px">{{ s.desc }}</p>
+  {% if s.desc %}<p class="lead" style="color:var(--muted);max-width:52ch;margin-top:16px">{{ s.desc }}</p>{% endif %}
 </div>
 
-{% if s.type == "repos" %}
-<div class="wrap" style="padding-bottom:80px">
+{% if s.repos %}
+<div class="wrap" style="padding-bottom:40px">
   <div class="latest repos">
     {% for r in s.repos %}
     <a href="{{ r.url }}"><span class="rn">{{ r.name }}</span><i class="ext">↗</i><em class="tag">{{ r.tag }}</em></a>
     {% endfor %}
   </div>
 </div>
-{% else %}
+{% endif %}
+{% if s.collection %}
 <div class="wrap">
   <ul class="entries">
     {% assign docs = site[s.collection] | sort: 'date' | reverse %}
